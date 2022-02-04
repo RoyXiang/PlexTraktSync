@@ -241,6 +241,13 @@ class TraktApi:
 
     @rate_limit()
     def search_by_id(self, media_id: str, id_type: str, media_type: str):
+        if id_type == "hama":
+            hama_type, media_id = media_id.split('-', 1)
+            if hama_type in ["tvdb", "tvdb2"]:
+                id_type = "tvdb"
+            if media_type == "episode":
+                media_id = media_id.split('/', 1)[0]
+
         if id_type == "tvdb" and media_type == "movie":
             # Skip invalid search.
             # The Trakt API states that tvdb is only for shows and episodes:

@@ -169,7 +169,7 @@ class MediaFactory:
 
             return None
 
-        if guid.provider not in ["imdb", "tmdb", "tvdb"]:
+        if guid.provider not in ["hama", "imdb", "tmdb", "tvdb"]:
             logger.error(
                 f"{guid.pm.item}: Unable to parse a valid provider from guid {guid}"
             )
